@@ -1,4 +1,5 @@
 {
+    "description": "Application User Guide for High Performance Computing (HPC) on IBM Power Systems",
     "pdf.fontFamily": "Arial",
     "pdf.fontSize": "11",
     "pdf.margin.bottom": "56",
@@ -7,4 +8,5 @@
     "pdf.margin.top": "56",
     "pdf.pageNumbers": "true",
     "pdf.paperSize": "a4"
+    "title": "OpenPOWER HPC Application User Guide"
 }
