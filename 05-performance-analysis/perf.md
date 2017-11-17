@@ -4,7 +4,7 @@ The Linux standard Perf tool makes it possible to perform performance profiling 
 
 Perf mainly relies on the following commands:
 
-| Command	      | Option  | Purpose
+| Command       | Option  | Purpose
 |:-------------:|:-------:|---------
 | perf annotate |         | Annotate source code with events
 | perf list     |         | List supported hardware counters
