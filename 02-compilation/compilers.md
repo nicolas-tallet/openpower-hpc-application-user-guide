@@ -1,8 +1,3 @@
----
-layout: page
-title: Compilers
----
-
 # Compilers
 
 ## Global
