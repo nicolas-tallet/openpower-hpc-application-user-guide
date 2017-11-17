@@ -1,7 +1,3 @@
----
-layout: page
-title: Allinea DDT
----
 # Allinea DDT
 
 ## *Reverse Connect* Debugging Session
