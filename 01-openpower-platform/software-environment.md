@@ -12,9 +12,9 @@ The HPC Software stack is made of the following software packages:
 |                      | GCC \[Advance Toolchain 10.0\] | 6.3
 |                      | GCC \[Advance Toolchain 11.0\] | 7.2
 |                      | IBM XL C/C++                   | 13.1.5
-|                      |                                | 13.1.6 \(Beta 13\)
+|                      |                                | 13.1.6 (Beta)
 |                      | IBM XL Fortran                 | 15.1.5
-|                      |                                | 15.1.6 \(Beta 13\)
+|                      |                                | 15.1.6 (Beta)
 |                      | LLVM Clang                     | Beta
 |                      | LLVM XLFlang                   | Beta
 |                      | PGI Accelerator                | 17.07
@@ -26,8 +26,5 @@ The HPC Software stack is made of the following software packages:
 | Performance Analysis | IBM Parallel Performance Toolkit for POWER | 2.3
 
 > IBM XL C/C++ is fully compatible with the C++ 11 standard.
->
-> IBM Spectrum MPI \(based on Open MPI 2.0\) has become the default choice for MPI library starting from Q4 2016. IBM Parallel Environment has therefore been discontinued.
 
-
-
+> IBM Spectrum MPI (based on Open MPI 2.0) has become the default choice for MPI library starting from Q4 2016. IBM Parallel Environment has therefore been discontinued.

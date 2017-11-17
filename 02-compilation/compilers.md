@@ -23,7 +23,7 @@ The table below provides the main equivalences between the options of the differ
 | Purpose                           | GCC                              | IBM XL C/C++ & Fortran    | PGI Accelerator                        | LLVM Clang & XLFlang
 |:---------------------------------:|:--------------------------------:|:-------------------------:|:--------------------------------------:|:--------------------:|
 | Architecture                      | -mcpu=power8                     | -qarch=pwr8               | -m64                                   | -target powerpcle-unknown-linux-gnu -mcpu=pwr8
-| Disabled Optimization	             | -O0                              | -O0 -qnoopt               | -O0                                    | -O0
+| Disabled Optimization	            | -O0                              | -O0 -qnoopt               | -O0                                    | -O0
 | Recommended Optimization          | -O3 -mcpu=power8 -funroll-loops  | -O3 [-qipa] [-qhot]       | -fast -Mipa=fast,inline [-Msmartalloc] | -O2
 | Profile-Guided Optimization (PGO) | -fprofile-generate/-fprofile-use | -qpdf1/-qpdf2             | -Mpfi/-Mpfo                            | -fprofile-instr-generate/-fprofile-instr-use
 | Inter-Procedural Optimization     | -flto                            | -qipa                     | -Mipa                                  | N/A
@@ -36,16 +36,16 @@ The table below provides the main equivalences between the options of the differ
 | Debugging Symbols                 | -g                               | -g                        | -g                                     | -g
 | Verbose                           |                                  | -V                        |                                        |
 
-> For IBM XL C/C++ & Fortran, the `-qxflag` option has been replaced by the `-qtgtarch` option.
-
 ### GPU Device Target Specification
 
-| Compiler | Option            | Option For:<br>Tesla K80 | Option For:<br>Tesla P100 |
-|:--------:|:-----------------:|:------------------------:|:-------------------------:|
-| GCC      |                   |                          |                           |
-| IBM XL   | -qtgtarch={value} | -qtgtarch=sm_37          | -qtgtarch=sm_60           |
-| LLVM     |                   |                          |                           |
-| PGI      | -ta:{value}       | -ta:cc37                 | -ta:cc60                  |
+| Compiler | Option            | Target:<br>Tesla K80  | Target:<br>Tesla P100
+|:--------:|:-----------------:|:---------------------:|:---------------------:|
+| GCC      |                   |                       | |
+| IBM XL   | -qtgtarch={value} | -qtgtarch=sm_37       | -qtgtarch=sm_60
+| LLVM     |                   |                       | |
+| PGI      | -ta:{value}       | -ta:cc37              | -ta:cc60
+
+> For IBM XL C/C++ & Fortran, the former `-qxflag` option has been replaced by the `-qtgtarch` option.
 
 ## Compiler-Specific
 
