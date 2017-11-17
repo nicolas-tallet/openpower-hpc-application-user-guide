@@ -1,8 +1,3 @@
----
-layout: page
-title: GDB
----
-
 # GNU Debugger (GDB)
 
 The GNU Debugger is useful for:
