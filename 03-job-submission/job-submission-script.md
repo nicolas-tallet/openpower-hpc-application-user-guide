@@ -1,8 +1,3 @@
----
-layout: page
-title: Job Submission Script
----
-
 # Job Submission Script
 
 A submission script allows submitting user jobs through the workload scheduler.
