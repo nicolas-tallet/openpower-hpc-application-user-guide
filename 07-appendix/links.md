@@ -1,8 +1,3 @@
----
-layout: page
-title: Links
----
-
 # Links
 
 ## IBM POWER8
