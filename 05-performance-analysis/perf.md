@@ -1,8 +1,3 @@
----
-layout: page
-title: Perf
----
-
 # Perf
 
 The Linux standard Perf tool makes it possible to perform performance profiling of a specific process.
