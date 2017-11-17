@@ -1,8 +1,3 @@
----
-layout: page
-title: Processor Affinity
----
-
 # Processor Affinity
 
 ## IBM Spectrum LSF *p8aff* esub [Recommended Option]
