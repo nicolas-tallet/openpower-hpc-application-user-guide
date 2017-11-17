@@ -1,8 +1,8 @@
-```
+```markdown
 # Summary
 ```
 
-```
+```markdown
 * [Section 01: OpenPOWER Platform](01-openpower-platform/README.md)
     * [Hardware Environment](01-openpower-platform/hardware-environment.md)
     * [Software Environment](01-openpower-platform/software-environment.md)
