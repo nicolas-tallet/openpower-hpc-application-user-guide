@@ -13,6 +13,7 @@
 
 * [Section 03: Job Submission](03-job-submission/README.md)
     * [Job Submission Script](03-job-submission/job-submission-script.md)
+    * [MPI Library](03-job-submission/mpi-library.md)
     * [Task Placement](03-job-submission/task-placement.md)
     * [Processor Affinity](03-job-submission/processor-affinity.md)
     * [GPU Device Exploitation](03-job-submission/gpu-device-exploitation.md)
