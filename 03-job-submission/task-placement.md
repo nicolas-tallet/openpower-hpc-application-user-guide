@@ -1,8 +1,3 @@
----
-layout: page
-title: Task Placement
----
-
 # Task Placement
 
 ## Default Placement
