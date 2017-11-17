@@ -7,6 +7,6 @@
     "pdf.margin.right": "62",
     "pdf.margin.top": "56",
     "pdf.pageNumbers": "true",
-    "pdf.paperSize": "a4"
+    "pdf.paperSize": "a4",
     "title": "OpenPOWER HPC Application User Guide"
 }
