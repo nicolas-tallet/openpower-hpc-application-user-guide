@@ -80,12 +80,14 @@ This directive has the following syntax:
 
 ## IBM Spectrum LSF Open MPI-Specific *ompi* Application
 
-This mechanism is invoked through:
-* The *application* option to the `bsub` submission command:
+If the Open MPI library has been be built without integrated support for IBM Spectrum LSF, the following mechanism is required to enforce processor affinity:
+
+* Add the *application* option to the Spectrum LSF `bsub` submission command:
 ```
 bsub -app ompi < job.sh
 ```
-* The *rankfile* option to the Open MPI `mpiexec` command:
+
+* Add the *rankfile* option to the Open MPI `mpiexec` command:
 ```
 mpiexec -rf ${LSB_RANK_HOSTFILE} <binary>
 ```
@@ -94,7 +96,7 @@ instead of:
 mpirun --hostfile ${LSB_DJOB_HOSTFILE} -np ${LSB_DJOB_NUMPROC} <binary>
 ```
 
-> The *ompi* predefined application takes care of generating the rankfile to be used by the Open MPI execution command.
+> The Spectrum LSF *ompi* predefined application takes care of generating the rankfile to be used by the Open MPI execution command.
 
 ## Standalone Shared Memory (Multi-Threads) Job Submission
 

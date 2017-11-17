@@ -3,9 +3,10 @@
 A submission script allows submitting user jobs through the workload scheduler.
 
 A submission script is made of two distinct sections:
+
 * Section #1: Directives
 The header consists in a set of IBM Spectrum LSF directives.
-These directives are introduced by the following prefix: *#BSUB*.
+These directives are introduced by the following prefix: `#BSUB`.
 These directives are specified through the following syntax : <Option> <Value>.
 
 * Section #2: Shell Script
@@ -26,7 +27,7 @@ The main IBM Spectrum LSF directive keywords are the following:
 | -W     | HH:MM               | Runlimit
 | -x     |                     | Exclusive job
 
-> IBM Spectrum LSF uses an automatically-created directory inside the user Home Directory in order to temporarily store the elements related to a submitted job.
+> Note: IBM Spectrum LSF uses an automatically-created directory inside the user Home Directory in order to temporarily store the elements related to a submitted job.
 The location of this directory is the following:
 ```
 ${HOME}/.lsbatch
