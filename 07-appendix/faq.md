@@ -1,8 +1,3 @@
----
-layout: page
-title: FAQ
----
-
 # Frequently Asked Questions (FAQ)
 
 ## How To Display the Map of Physical Cores / Logical Cores?
