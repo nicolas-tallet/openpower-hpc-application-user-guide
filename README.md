@@ -12,10 +12,10 @@ High Performance Computing (HPC) on IBM Power Systems | Application User Guide
     * Debugging
     * Performance Analysis
 
-* Authors
+* Authors:
     * Nicolas Tallet
     * Geoffrey Pascal
 
-* Contributors
+* Contributors:
     * Ludovic Enault
     * Pascal Vezolle
