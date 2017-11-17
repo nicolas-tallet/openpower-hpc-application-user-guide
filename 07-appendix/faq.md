@@ -82,6 +82,7 @@ The solution involves properly setting the environment variable `CUDA_VISIBLE_DE
 ## How To Monitor GPU Activity on Interactive Nodes?
 
 Two options exist for monitoring the GPU activity on one of the interactive nodes:
+
 *	Option #1: NVIDIA System Management Interface Command
 ```
 $ nvidia-smi pmon
@@ -92,6 +93,7 @@ $ nvidia-smi pmon
 .   2  145351     C    65     0     0     0   matrixMul
 .   3       -     -     -     -     -     -   -
 ```
+
 *	Option #2: `gpustat` Utility
 ```
 host  Mon Feb 13 19:08:43 2017
