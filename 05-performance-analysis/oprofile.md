@@ -1,7 +1,3 @@
----
-layout: page
-title: OProfile
----
 # OProfile
 
 OProfile is an Open-Source project including a statistical tool for performance profiling.
