@@ -13,12 +13,14 @@ OProfile mainly relies on the following commands:
 | opannotate | Annotate source code with events
 
 ## Performance Data Collection
+
 Performance data collection is achieved through the ‘operf’ command:
 ```
 $ operf <binary>
 ```
 
 ## Performance Data Reporting
+
 Performance data reporting is achieved through the ‘opreport’ command:
 ```
 $ opreport
