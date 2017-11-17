@@ -1,5 +1,7 @@
 # Summary
 
+## Introduction
+
 ## OpenPOWER Platform
 
 * [Hardware Environment](01-openpower-platform/hardware-environment.md)
