@@ -8,7 +8,7 @@ The invocation commands of the compilers are the following:
 
 | Compiler | C     | C++     | Fortran 77 | Fortran 90 | Fortran 03 | Fortran 08
 |:--------:|:-----:|:-------:|:----------:|:----------:|:----------:|:----------:|
-| GCC	     | gcc   | g++     | gfortran   | gfortran   | gfortran   | gfortran
+| GCC      | gcc   | g++     | gfortran   | gfortran   | gfortran   | gfortran
 | IBM XL   | xlc_r | xlC_r   | xlf_r      | xlf90_r    | xlf2003_r  | xlf2008_r
 | LLVM     | clang | clang++ | xlflang    | xlflang    | xlflang    | xlflang
 | PGI      | pgcc  | pgCC    | pgf90      | pgf90      | pgf90      | pgf90
@@ -22,18 +22,18 @@ The table below provides the main equivalences between the options of the differ
 
 | Purpose                           | GCC                              | IBM XL C/C++ & Fortran    | PGI Accelerator                        | LLVM Clang & XLFlang
 |:---------------------------------:|:--------------------------------:|:-------------------------:|:--------------------------------------:|:--------------------:|
-| Architecture	                    | -mcpu=power8                     | -qarch=pwr8               | -m64                                   | -target powerpcle-unknown-linux-gnu -mcpu=pwr8
-| Disabled Optimization	            | -O0                              | -O0 -qnoopt               | -O0                                    | -O0
+| Architecture                      | -mcpu=power8                     | -qarch=pwr8               | -m64                                   | -target powerpcle-unknown-linux-gnu -mcpu=pwr8
+| Disabled Optimization	             | -O0                              | -O0 -qnoopt               | -O0                                    | -O0
 | Recommended Optimization          | -O3 -mcpu=power8 -funroll-loops  | -O3 [-qipa] [-qhot]       | -fast -Mipa=fast,inline [-Msmartalloc] | -O2
-| Profile-Guided Optimization (PGO)	| -fprofile-generate/-fprofile-use | -qpdf1/-qpdf2             | -Mpfi/-Mpfo                            | -fprofile-instr-generate/-fprofile-instr-use
+| Profile-Guided Optimization (PGO) | -fprofile-generate/-fprofile-use | -qpdf1/-qpdf2             | -Mpfi/-Mpfo                            | -fprofile-instr-generate/-fprofile-instr-use
 | Inter-Procedural Optimization     | -flto                            | -qipa                     | -Mipa                                  | N/A
 | Vectorization                     | -ftree-vectorize                 | -qsimd=auto               | -Mvect                                 | N/A
-| Automatic Parallelization	        | -floop-parallelize-all           | -qsmp=auto                | -Mconcur                               | N/A
-| OpenMP Support                    | -fopenmp                         | -qsmp=omp	               | -mp                                    | -fopenmp
+| Automatic Parallelization         | -floop-parallelize-all           | -qsmp=auto                | -Mconcur                               | N/A
+| OpenMP Support                    | -fopenmp                         | -qsmp=omp                 | -mp                                    | -fopenmp
 | OpenACC Offload                   | N/A                              | N/A                       | -acc -Minfo=accel -ta:tesla:cc60       | ?
 | OpenMP Offload                    | N/A                              | -qoffload -qtgtarch=sm_60 | N/A                                    | -fopenmptargets=nvptx64-nvidia-cuda
-| Loop Optimization	                | -fpeel-loops -funroll-loops	     | -qhot                     |                                        | -funroll-loops
-| Debugging Symbols	                | -g                               | -g                        | -g                                     | -g
+| Loop Optimization                 | -fpeel-loops -funroll-loops      | -qhot                     |                                        | -funroll-loops
+| Debugging Symbols                 | -g                               | -g                        | -g                                     | -g
 | Verbose                           |                                  | -V                        |                                        |
 
 > For IBM XL C/C++ & Fortran, the `-qxflag` option has been replaced by the `-qtgtarch` option.
@@ -42,7 +42,7 @@ The table below provides the main equivalences between the options of the differ
 
 | Compiler | Option            | Option For:<br>Tesla K80 | Option For:<br>Tesla P100 |
 |:--------:|:-----------------:|:------------------------:|:-------------------------:|
-| GCC	     |                   |                          |                           |
+| GCC      |                   |                          |                           |
 | IBM XL   | -qtgtarch={value} | -qtgtarch=sm_37          | -qtgtarch=sm_60           |
 | LLVM     |                   |                          |                           |
 | PGI      | -ta:{value}       | -ta:cc37                 | -ta:cc60                  |
