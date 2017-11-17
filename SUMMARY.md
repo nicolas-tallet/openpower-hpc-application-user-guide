@@ -29,9 +29,9 @@
     * [Allinea Map](05-performance-analysis/allinea-map.md)
     * [IBM Parallel Performance Toolkit](05-performance-analysis/ibm-parallel-performance-toolkit.md)
 
-* [Section 06](06-benchmarking-tools/README.md)
+* [Section 06: Benchmarking Tools](06-benchmarking-tools/README.md)
 
-* [Section 07](07-appendix/README.md)
+* [Section 07: Appendix](07-appendix/README.md)
     * [FAQ](07-appendix/faq.md)
     * [Links](07-appendix/links.md)
     * [Samples](07-appendix/samples.md)
