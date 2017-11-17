@@ -1,8 +1,10 @@
-pdf.pageNumbers: true
-pdf.fontSize: 11
-pdf.fontFamily: 'Arial'
-pdf.paperSize: 'a4'
-pdf.margin.top : 56
-pdf.margin.bottom : 56
-pdf.margin.right : 62
-pdf.margin.left: 62
+{
+    "pdf.fontFamily": "Arial",
+    "pdf.fontSize": "11",
+    "pdf.margin.bottom": "56",
+    "pdf.margin.left": "62",
+    "pdf.margin.right": "62",
+    "pdf.margin.top": "56",
+    "pdf.pageNumbers": "true",
+    "pdf.paperSize": "a4"
+}
