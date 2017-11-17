@@ -36,12 +36,12 @@ Data collection produces an output file named *perf.data*.
 
 The *perf report* command produces a by-routine performance report:
 ```
-perf report --input perf.data > perf.report
+$ perf report --input perf.data > perf.report
 ```
 
 The *perf annotate* command generates line-by-line annotations inside the routines:
 ```
-perf annotate --input perf.data > perf.annotate
+$ perf annotate --input perf.data > perf.annotate
 ```
 
 ## FlameGraph
