@@ -27,8 +27,7 @@ The HPC Software stack is made of the following software packages:
 
 > IBM XL C/C++ is fully compatible with the C++ 11 standard.
 >
-> IBM Spectrum MPI \(based on Open MPI 2.0\) has become the default choice for MPI library starting from Q4 2016.  
-> IBM Parallel Environment has therefore been discontinued.
+> IBM Spectrum MPI \(based on Open MPI 2.0\) has become the default choice for MPI library starting from Q4 2016. IBM Parallel Environment has therefore been discontinued.
 
 
 
