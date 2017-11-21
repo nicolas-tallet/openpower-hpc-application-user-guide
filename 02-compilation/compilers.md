@@ -2,6 +2,17 @@
 
 ## Global
 
+### Programming Models Support
+
+The current compiler support for the existing programming models for GPU offload is the following:
+
+| Programming Model  | GCC           | IBM XL C/C++<br>IBM XL Fortran  | LLVM Clang<br>LLVM XLFlang | PGI Accelerator
+|:------------------:|:-------------:|:-------------------------------:|:--------------------------:|:---------------:|
+| CUDA               | Supported     | Supported                       | Supported                  | Supported
+| CUDA Fortran       | Supported     | Supported                       | Supported                  | Supported
+| OpenACC            | Experimental  | Not Supported                   | Not Supported              | Supported
+| OpenMP             | >= Version 7  | >= Versions 13.1.6 / 15.1.6     | Supported                  | Not Supported             
+
 ### Invocation
 
 The invocation commands of the compilers are the following:
@@ -20,32 +31,32 @@ It is recommended to exclusively use these variants, even in the case of non-mul
 
 The table below provides the main equivalences between the options of the different compilers:
 
-| Purpose                           | GCC                              | IBM XL C/C++ & Fortran    | PGI Accelerator                        | LLVM Clang & XLFlang
-|:---------------------------------:|:--------------------------------:|:-------------------------:|:--------------------------------------:|:--------------------:|
-| Architecture                      | -mcpu=power8                     | -qarch=pwr8               | -m64                                   | -target powerpcle-unknown-linux-gnu -mcpu=pwr8
-| Disabled Optimization	            | -O0                              | -O0 -qnoopt               | -O0                                    | -O0
-| Recommended Optimization          | -O3 -mcpu=power8 -funroll-loops  | -O3 [-qipa] [-qhot]       | -fast -Mipa=fast,inline [-Msmartalloc] | -O2
-| Profile-Guided Optimization (PGO) | -fprofile-generate/-fprofile-use | -qpdf1/-qpdf2             | -Mpfi/-Mpfo                            | -fprofile-instr-generate/-fprofile-instr-use
-| Inter-Procedural Optimization     | -flto                            | -qipa                     | -Mipa                                  | N/A
-| Vectorization                     | -ftree-vectorize                 | -qsimd=auto               | -Mvect                                 | N/A
-| Automatic Parallelization         | -floop-parallelize-all           | -qsmp=auto                | -Mconcur                               | N/A
-| OpenMP Support                    | -fopenmp                         | -qsmp=omp                 | -mp                                    | -fopenmp
-| OpenACC Offload                   | N/A                              | N/A                       | -acc -Minfo=accel -ta:tesla:cc60       | ?
-| OpenMP Offload                    | N/A                              | -qoffload -qtgtarch=sm_60 | N/A                                    | -fopenmptargets=nvptx64-nvidia-cuda
-| Loop Optimization                 | -fpeel-loops -funroll-loops      | -qhot                     |                                        | -funroll-loops
-| Debugging Symbols                 | -g                               | -g                        | -g                                     | -g
-| Verbose                           |                                  | -V                        |                                        |
+| Purpose                           | GCC                              | IBM XL C/C++<br>IBM XL Fortran  | LLVM Clang<br>LLVM XLFlang                     | PGI Accelerator                        
+|:---------------------------------:|:--------------------------------:|:-------------------------------:|:----------------------------------------------:|:-----------------:|
+| Architecture                      | -mcpu=power8                     | -qarch=pwr8                     | -target powerpcle-unknown-linux-gnu -mcpu=pwr8 | -m64
+| Disabled Optimization	            | -O0                              | -O0 -qnoopt                     | -O0                                            | -O0
+| Recommended Optimization          | -O3 -mcpu=power8 -funroll-loops  | -O3 [-qipa] [-qhot]             | -O2                                            | -fast -Mipa=fast,inline [-Msmartalloc]
+| Profile-Guided Optimization (PGO) | -fprofile-generate/-fprofile-use | -qpdf1/-qpdf2                   | -fprofile-instr-generate/-fprofile-instr-use   | -Mpfi/-Mpfo
+| Inter-Procedural Optimization     | -flto                            | -qipa                           | N/A                                            | -Mipa
+| Vectorization                     | -ftree-vectorize                 | -qsimd=auto                     | N/A                                            | -Mvect
+| Automatic Parallelization         | -floop-parallelize-all           | -qsmp=auto                      | N/A                                            | -Mconcur
+| OpenMP Support                    | -fopenmp                         | -qsmp=omp                       | -fopenmp                                       | -mp
+| OpenACC Offload                   | N/A                              | N/A                             | ?                                              | -acc -Minfo=accel -ta:tesla:cc60
+| OpenMP Offload                    | N/A                              | -qoffload -qtgtarch=sm_60       | -fopenmptargets=nvptx64-nvidia-cuda            | N/A
+| Loop Optimization                 | -fpeel-loops -funroll-loops      | -qhot                           | -funroll-loops                                 | |
+| Debugging Symbols                 | -g                               | -g                              | -g                                             | -g
+| Verbose                           |                                  | -V                              |                                                | |
 
 ### GPU Device Target Specification
 
-| Compiler | Option            | Target:<br>Tesla K80  | Target:<br>Tesla P100
-|:--------:|:-----------------:|:---------------------:|:---------------------:|
-| GCC      |                   |                       | |
-| IBM XL   | -qtgtarch={value} | -qtgtarch=sm_37       | -qtgtarch=sm_60
-| LLVM     |                   |                       | |
-| PGI      | -ta:{value}       | -ta:cc37              | -ta:cc60
+The target device can be explicitely specified through the following options:
 
-> For IBM XL C/C++ & Fortran, the former `-qxflag` option has been replaced by the `-qtgtarch` option.
+| Target      | GCC               | IBM XL C/C++<br>IBM XL Fortran  | LLVM Clang<br>LLVM XLFlang  | PGI Accelerator                        
+|:-----------:|:-----------------:|:-------------------------------:|:---------------------------:|----------------:|
+| Tesla K80   |                   | -qtgtarch=sm_37                 |                             | -ta:cc37
+| Tesla P100  |                   | -qtgtarch=sm_60                 |                             | -ta:cc60
+
+> For IBM XL C/C++ & IBM XL Fortran, the former `-qxflag` option has been replaced by the `-qtgtarch` option.
 
 ## Compiler-Specific
 
@@ -118,11 +129,16 @@ The table below details the main possible combinations:
 
 ### PGI Accelerator
 
-* Default Compiler Options: Create User-Specific File in:
+#### Default Compiler Options
+
+A user-specific set of default compiler options can be defined through the following procedure:
+
+* Create Following File inside Home Directory:
 ```
 ~/.mypgirc
 ```
-Acceptable Directives:
+
+* Populate File with Acceptable Directives:
   * Default Compute Capability:
   ```
   set DEFCOMPUTECAP=60;
@@ -132,7 +148,13 @@ Acceptable Directives:
   set DEFCUDAVERSION=8.0;
   ```
 
-* `-fast` Flag Configuration:
+> Note: These options would override any system-wide options defined by system administrator.
+
+#### `-fast` Compilation Flag configuration
+
+The `-fast` compilation flag is a shortcut for a consistent set of predefined optimization options.
+
+Its current signification can be made explicit through the following command:
 ```
 $ pgcc -fast -help
 Reading rcfile /opt/pgi/linuxpower/16.10/bin/.pgccrc

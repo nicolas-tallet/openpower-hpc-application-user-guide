@@ -6,7 +6,8 @@ The HPC Software stack is made of the following software packages:
 
 | Category             | Software Package               | Current Version
 |:--------------------:|:------------------------------:|:---------------:|
-| Compilers            | CUDA Toolkit                   | 8.0
+| Compilers / Runtimes | CUDA Toolkit                   | 8.0
+|                      |                                | 9.0
 |                      | GCC \[Standard\]               | 4.8
 |                      | GCC \[Advance Toolchain 9.0\]  | 5.4
 |                      | GCC \[Advance Toolchain 10.0\] | 6.3
@@ -17,9 +18,9 @@ The HPC Software stack is made of the following software packages:
 |                      |                                | 15.1.6 (Beta)
 |                      | LLVM Clang                     | Beta
 |                      | LLVM XLFlang                   | Beta
-|                      | PGI Accelerator                | 17.07
+|                      | PGI Accelerator                | 17.7
+|                      |                                | 17.9
 |                      |                                | 17.10
-|                      |                                | 17.09
 | MPI Library          | IBM Spectrum MPI               | 10.1
 | Scientific Libraries | IBM ESSL                       | 5.5
 |                      | IBM PESSL                      | 5.3

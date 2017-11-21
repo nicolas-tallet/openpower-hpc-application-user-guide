@@ -4,7 +4,7 @@
 
 This mechanism is invoked through the following directive inside the IBM Spectrum LSF job submission script:
 ```
-#BSUB -a p8aff(*num_threads_per_task*,*smt*,*cpus_per_core*,*distribution_policy*)
+#BSUB -a p8aff(num_threads_per_task,smt,cpus_per_core,distribution_policy)
 ```
 The *p8aff* function takes the following arguments:
 
@@ -29,13 +29,13 @@ Distribution policy is a two-option strategy that affects the way MPI tasks are 
 
 The following examples show the difference between the two strategies in a SMT=1 and 4 MPI Task configuration:
 
-* *Pack*:
+* Strategy *Pack*:
 
 | 0  | 8  | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | 88 | 96 | 104 | 112 | 120 | 128 | 136 | 144 | 152 |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | X  | X  | X  | X  |    |    |    |    |    |    |    |    |    |     |     |     |     |     |     |     |
 
-* *Distribute* Strategy:
+* Strategy *Distribute*:
 
 | 0  | 8  | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | 88 | 96 | 104 | 112 | 120 | 128 | 136 | 144 | 152 |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
@@ -45,13 +45,13 @@ The following table details the IBM Spectrum LSF *p8aff* esub parameters to be u
 
 | MPI Tasks / Node | Threads / Task | IBM Spectrum LSF *p8aff* esub Directive
 |:----------------:|:--------------:|:---------------------------------------:
-| 1                | 20             | #BSUB -a p8aff(20,1,1,balance)
-| 2                | 10             | #BSUB -a p8aff(10,1,1,balance)
-| 4                | 5              | #BSUB -a p8aff(5,1,1,balance)
-| 10               | 2              | #BSUB -a p8aff(2,1,1,balance)
-| 20               | 1              | #BSUB -a p8aff(1,1,1,balance)
-| 20               | 2              | #BSUB -a p8aff(2,2,2,balance)
-| 20               | 4              | #BSUB -a p8aff(4,4,4,balance)
+| 1                | 20             | #BSUB -a p8aff(20,8,1,balance)
+| 2                | 10             | #BSUB -a p8aff(10,8,1,balance)
+| 4                | 5              | #BSUB -a p8aff(5,8,1,balance)
+| 10               | 2              | #BSUB -a p8aff(2,8,1,balance)
+| 20               | 1              | #BSUB -a p8aff(1,8,1,balance)
+| 20               | 2              | #BSUB -a p8aff(2,8,2,balance)
+| 20               | 4              | #BSUB -a p8aff(4,8,4,balance)
 
 > The *p8aff* esub automatically sets the following two environment variables:
 * `LSB_EFFECTIVE_RSRCREQ`: Effective IBM Spectrum LSF Resource Requirement, including Affinity String used to control the Processor Affinity of the current job.
