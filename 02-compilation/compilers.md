@@ -125,7 +125,11 @@ The table below details the main possible combinations:
 |:-----------------:|:-------:|
 | -qsaveopt         | Save compilation-related information to the corresponding object file
 
-> Compilation-related information stored thanks to the `-qsaveopt` option can be read through the `string -a` command.
+> Note: Compilation-related information stored thanks to the `-qsaveopt` option can be read through the `strings --all` command:
+```
+$ strings -a <binary> | grep '^@(#)opt'
+@(#)opt c /opt/ibm/xlC/13.1.6/bin/.orig/xlc_r -F/opt/ibm/xlC/13.1.6/etc/xlc.cfg.rhel.7.3.gcc.4.8.5.cuda.9.0 -DHAVE_CONFIG_H -I. -I/gpfs/shared/fftw -q64 -qfullpath -qsaveopt -O3 -qarch=pwr8 -qtune=pwr8 fftwf77.lo -MD -MP -MF .deps/fftwf77.Tpo -c fftwf77.c
+```
 
 ### PGI Accelerator
 
