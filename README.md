@@ -1,19 +1,22 @@
+![OpenPOWER Logo](openpower-logo.jpeg)
+
 # OpenPOWER HPC Application User Guide
 
-High Performance Computing (HPC) on IBM Power Systems | Application User Guide
+High Performance Computing (HPC) on IBM Power Systems
+Application User Guide
 
-* Target Audience:
-  * Benchmarkers
-  * Application Developers
-
-* Content:
-  * Scientific Application Compilation
-  * Execution
-  * Debugging
-  * Performance Analysis
-
-* Authors:
+* **Authors:**
   * Nicolas Tallet
   * Geoffrey Pascal
   * Ludovic Enault
   * Pascal Vezolle
+
+* **Target Audience:**
+  * Benchmarkers
+  * Application Developers
+
+* **Content:**
+  * Scientific Application Compilation
+  * Execution
+  * Debugging
+  * Performance Analysis
