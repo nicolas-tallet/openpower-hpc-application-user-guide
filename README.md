@@ -5,18 +5,6 @@
 High Performance Computing (HPC) on IBM Power Systems
 Application User Guide
 
-* **Authors:**
-  * Nicolas Tallet
-  * Geoffrey Pascal
-  * Ludovic Enault
-  * Pascal Vezolle
+**Authors:** Nicolas Tallet, Geoffrey Pascal, Ludovic Enault, Pascal Vezolle
 
-* **Target Audience:**
-  * Benchmarkers
-  * Application Developers
-
-* **Content:**
-  * Scientific Application Compilation
-  * Execution
-  * Debugging
-  * Performance Analysis
+* **Target Audience:** Benchmarkers, Application Developers
