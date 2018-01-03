@@ -55,6 +55,7 @@ The target device can be explicitely specified through the following options:
 |:-----------:|:-----------------:|:-------------------------------:|:---------------------------:|----------------:|
 | Tesla K80   |                   | -qtgtarch=sm_37                 |                             | -ta:cc37
 | Tesla P100  |                   | -qtgtarch=sm_60                 |                             | -ta:cc60
+| Tesla V100  |                   | -qtgtarch=sm_70                 |                             | -ta:cc70
 
 > For IBM XL C/C++ & IBM XL Fortran, the former `-qxflag` option has been replaced by the `-qtgtarch` option.
 
