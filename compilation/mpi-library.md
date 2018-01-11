@@ -7,7 +7,7 @@ The invocation commands of the MPI wrappers are the following:
 | C     | C++    | Fortran
 |:-----:|:------:|:-------:|
 | mpicc | mpicxx | mpifort |
-|       | mpic++ | |
+|       | mpic++ |         |
 
 > The following Fortran wrappers are deprecated as of Open MPI v1.7, and replaced by `mpifort`:
 > * `mpif77`
