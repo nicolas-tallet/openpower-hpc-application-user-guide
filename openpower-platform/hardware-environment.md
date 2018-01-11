@@ -1,35 +1,31 @@
 # Hardware Environment
 
-## General Characteristics
+## Technical Specifications
 
-The IBM Power System S822LC compute nodes have the following technical characteristics:
+The IBM Power System compute nodes have the following technical characteristics:
 
-| Commercial Name                       | IBM Power System<br>S822LC | IBM Power System<br>S822LC for HPC
-|:-------------------------------------:|:--------------------------:|:----------------------------------:|
-| Code Name                             | Firestone                  | Minsky
-| Model Type                            | 8335-GTA                   | 8335-GTB
-| \# CPUs                               | 2                          | 2
-| Model                                 | POWER8                     | POWER8NV
-| Physical Cores                        | 10                         | 10
-| Physical Threads                      | 10 / 20 / 40 / 80          | 10 / 20 / 40 / 80
-| Clock Frequency: Nominal              | 2.93 GHz                   | 2.86 GHz
-| Clock Frequency: Max. (Turbo)         | 3.49 GHz                   | 4.03 GHz
-| Memory                                | 128 GB                     | 128 GB
-| Memory Controllers                    | 2                          | 2
-| Memory Channels                       | 4                          | 4
-| L3 Cache                              | 8 MB                       | 8 MB
-| L4 Cache                              | 16 MB / Buffer Chip        | 16 MB / Buffer Chip
-| Memory Bandwidth                      | 230 GB/s                   | 230 GB/s
-| Peak Performance (Double Precision)   | 235 GFlops                 | 235 GFlops
-| \# GPUs                               | 2                          | 2 / 4
-| Model                                 | Tesla K80                  | Tesla P100
-| CUDA Cores                            | 4992                       | 3584
-| Memory                                | 24 GB                      | 16 GB
-| Peak Performance (Double Precision)   | 1.87 TFlops                | 5.3 TFlops
+| Commercial Name                         | IBM Power System<br>S822LC | IBM Power System<br>S822LC for HPC | IBM Power System<br>AC922
+|:---------------------------------------:|:--------------------------:|:----------------------------------:|:--------------------------:|
+| Model Type                              | 8335-GTA                   | 8335-GTB                           | 8335-GTH
+| # Sockets                               | 2                          | 2                                  | 2
+| CPU Model                               | POWER8                     | POWER8NV                           | POWER9
+| Physical Cores                          | 20                         | 20                                 | 40
+| Hardware Threads                        | 20/40/80/160               | 20/40/80/160                       | 40/80/160
+| Clock Frequency: Nominal / Max. (Turbo) | 2.93 GHz / 3.49 GHz        | 2.86 GHz / 4.03 GHz                | 2.00 GHz / 2.87 GHz
+| Peak Performance (Double Precision)     | 470 GFlops                 | 470 GFlops                         | 640 GFlops
+| L3 Cache (Per Physical Core)            | 8 MB                       | 8 MB                               | 5 MB
+| L4 Cache                                | 16 MB per Buffer Chip      | 16 MB per Buffer Chip              | -
+| Memory Min. / Max.                      | 128 GB                     | 128 GB                             | 256 GB / 1 TB
+| Memory Bandwidth                        | 230 GB/s                   | 230 GB/s                           | 340 GB/s
+| # GPU Devices                           | 2                          | 2/4                                | 2/4/6
+| GPU Model                               | NVIDIA Tesla K80           | NVIDIA Tesla P100                  | NVIDIA Tesla V100
+| GPU Peak Performance (Double Precision) | 1.87 TFlops                | 5.3 TFlops                         | 7.5 TFlops
+| GPU Memory                              | 24 GB                      | 16 GB                              | 16 GB
+| GPU Memory Bandwidth                    | 480 GB/s                   | 732 GB/s                           | 900 GB/s
 
 ## Simultaneous Multi-Threading (SMT)
 
-The S822LC compute nodes can be configured in 4 distinct SMT modes.  
+The IBM Power System nodes can be configured in distinct SMT modes.  
 Each SMT mode defines the number of logical cores (hardware threads) available on the node:
 
 | SMT Mode | \# Logical Cores
