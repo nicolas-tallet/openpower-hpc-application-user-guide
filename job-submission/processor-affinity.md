@@ -1,6 +1,32 @@
 # Processor Affinity
 
-## IBM Spectrum LSF *p8aff* esub [Recommended Option]
+Processor Affinity can be handled in the following ways:
+* Through the IBM Spectrum LSF *affinity* directive
+* Through the IBM Spectrum LSF *p8aff* esub [Valid for POWER8-based systems]
+* Through a user-specific script
+
+## IBM Spectrum LSF Affinity Directive
+
+The explicit resource requirement is expressed through the following directive inside the submission script:
+```
+#BSUB -R "affinity[<pu_type>(#):cpubind=<level>:distribute=<policy>]"
+```
+This directive has the following syntax:
+
+| Sub-Option          | Value   | Purpose
+|:-------------------:|:-------:|:-------:
+| pu_type(#)          | numa    | Type and number of Processor Units assigned to each task
+|                     | socket  |
+|                     | core    |
+|                     | thread  |
+| cpubind=level       | numa    | Task binding policy
+|                     | socket  |
+|                     | core    |
+|                     | thread  |
+| distribute=policy 	| balance | Task distribution onto the Processor Units inside a compute node
+|                     | pack    |
+
+## IBM Spectrum LSF *p8aff* esub
 
 This mechanism is invoked through the following directive inside the IBM Spectrum LSF job submission script:
 ```
@@ -56,27 +82,6 @@ The following table details the IBM Spectrum LSF *p8aff* esub parameters to be u
 > The *p8aff* esub automatically sets the following two environment variables:
 * `LSB_EFFECTIVE_RSRCREQ`: Effective IBM Spectrum LSF Resource Requirement, including Affinity String used to control the Processor Affinity of the current job.
 * `LSB_JOB_SMT_MODE`: SMT mode in effect on the allocated nodes for the current job.
-
-## IBM Spectrum LSF Explicit Resource Requirement Specification
-
-The explicit resource requirement is expressed through the following directive inside the submission script:
-```
-#BSUB -R “affinity[<pu_type>(#):cpubind=<level>:distribute=<policy>]”
-```
-This directive has the following syntax:
-
-| Sub-Option          | Value   | Purpose
-|:-------------------:|:-------:|:-------:
-| pu_type(#)          | numa    | Type and number of Processor Units assigned to each task
-|                     | socket  |
-|                     | core    |
-|                     | thread  |
-| cpubind=level      | numa    | Task binding policy
-|                     | socket  |
-|                     | core    |
-|                     | thread  |
-| distribute=policy 	| balance | Task distribution onto the Processor Units inside a compute node
-|                     | pack    |
 
 ## IBM Spectrum LSF Open MPI-Specific *ompi* Application
 
