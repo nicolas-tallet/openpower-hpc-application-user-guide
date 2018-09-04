@@ -1,27 +1,14 @@
 # Allinea DDT
 
-## *Reverse Connect* Debugging Session
+## Pre-Requisites
 
-* Enable *Reverse Connect* by modifying the job submission command:
-```
-ddt --connect mpirun <argument>
-```
-* Start Allinea Forge client
+The Allinea Forge client can be downloaded for free: 
 
-* Wait for client to connect to your remote system through SSH
+## Remote Debugging Session
 
-* Launch job
+### Initial Configuration: Remote Launch Settings
 
-* The Allinea Forge client will show the *Reverse Connect* request
-
-Note:
-> The request will specify:
-* The host (typically a batch compute node) from where the request was made.
-* The command line summary.
-
-## Remote Launch Settings
-
-The following configuration is required in the Allinea Forge client:
+The following configuration must be performed inside the Allinea Forge client:
 
 * Click on the *RemoteLaunch* drop down list
 
@@ -50,3 +37,22 @@ The following configuration is required in the Allinea Forge client:
   ```
   module load forge
   ```
+
+## *Reverse Connect* Debugging Session
+
+* Enable *Reverse Connect* by modifying the job submission command:
+```
+ddt --connect mpirun <argument>
+```
+* Start Allinea Forge client
+
+* Wait for client to connect to your remote system through SSH
+
+* Launch job
+
+* The Allinea Forge client will show the *Reverse Connect* request
+
+Note:
+> The request will specify:
+* The host (typically a batch compute node) from where the request was made.
+* The command line summary.

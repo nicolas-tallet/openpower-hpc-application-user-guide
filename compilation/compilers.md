@@ -41,7 +41,7 @@ The table below provides the main equivalences between the options of the differ
 | Vectorization                     | -ftree-vectorize                 | -qsimd=auto                     | N/A                                            | -Mvect
 | Automatic Parallelization         | -floop-parallelize-all           | -qsmp=auto                      | N/A                                            | -Mconcur
 | OpenMP Support                    | -fopenmp                         | -qsmp=omp                       | -fopenmp                                       | -mp
-| OpenACC Offload                   | N/A                              | N/A                             | ?                                              | -acc -Minfo=accel -ta:tesla:cc60
+| OpenACC Offload                   | N/A                              | N/A                             | ?                                              | -acc -Minfo=accel -ta:tesla:cc70
 | OpenMP Offload                    | N/A                              | -qoffload -qtgtarch=sm_60       | -fopenmptargets=nvptx64-nvidia-cuda            | N/A
 | Loop Optimization                 | -fpeel-loops -funroll-loops      | -qhot                           | -funroll-loops                                 | |
 | Debugging Symbols                 | -g                               | -g                              | -g                                             | -g

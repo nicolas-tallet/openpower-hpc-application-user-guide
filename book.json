@@ -8,6 +8,6 @@
     "pdf.margin.top": "2cm",
     "pdf.pageNumbers": "true",
     "pdf.paperSize": "a4",
-    "plugins": ["theme-darkblue"],
+    "plugins": ["gist", "theme-darkblue"],
     "title": "OpenPOWER HPC Application User Guide"
 }
