@@ -19,16 +19,16 @@ This directive has the following syntax:
 |                     | socket  |
 |                     | core    |
 |                     | thread  |
-| cpubind=level       | numa    | Task binding policy
+| cpubind=<level>     | numa    | Task binding policy
 |                     | socket  |
 |                     | core    |
 |                     | thread  |
-| distribute=policy 	| balance | Task distribution onto the Processor Units inside a compute node
+| distribute=<policy> | balance | Task distribution onto the Processor Units inside a compute node
 |                     | pack    |
 
 The following table details the IBM Spectrum LSF *affinity* directive syntax to be used for several standard execution configurations:
 
-| MPI Tasks / Node | Threads / Task | IBM Spectrum LSF *affinity* Directive
+| MPI Tasks / Node | Threads / Task | IBM Spectrum LSF Affinity Directive
 |:----------------:|:--------------:|:---------------------------------------:
 | 1                | 18             | #BSUB -R "affinity[thread(1,exclusive=(core,intask))*18:cpubind=thread:distribute=balance]"
 | 1                | 36             | #BSUB -R "affinity[thread(1,exclusive=(core,intask))*36:cpubind=thread:distribute=balance]"
@@ -72,15 +72,15 @@ The following examples show the difference between the two strategies in a SMT=1
 
 * Strategy *Pack*:
 
-| 0  | 8  | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | 88 | 96 | 104 | 112 | 120 | 128 | 136 | 144 | 152 |
-|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| X  | X  | X  | X  |    |    |    |    |    |    |    |    |    |     |     |     |     |     |     |     |
+| 0  | 4  | 8 | 12 | 16 | 20 | 24 | 28 | 32 | 36 | 40 | 44 | 48 | 52 | 56 | 60 | 64 | 68 | 72 | 76 | 80 | 84 | 88 | 92 | 96 | 100 | 104 | 108 | 112 | 116 | 120 | 124 | 128 | 132 | 136 | 140 |
+|:--:|:--:|:-:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| X  | X  | X | X  |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |     |     |     |     |     |     |     |     |     |     |     |
 
 * Strategy *Distribute*:
 
-| 0  | 8  | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80 | 88 | 96 | 104 | 112 | 120 | 128 | 136 | 144 | 152 |
-|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| X  | X  |    |    |    |    |    |    |    |    | X  | X  |    |     |     |     |     |     |     |				
+| 0  | 4  | 8 | 12 | 16 | 20 | 24 | 28 | 32 | 36 | 40 | 44 | 48 | 52 | 56 | 60 | 64 | 68 | 72 | 76 | 80 | 84 | 88 | 92 | 96 | 100 | 104 | 108 | 112 | 116 | 120 | 124 | 128 | 132 | 136 | 140 |
+|:--:|:--:|:-:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| X  | X  |   |    |    |    |    |    |    |    | X  | X  |    |    |    |    |    |    |    |		 |    |    |    |    |    |     |     |     |     |     |     |     |     |     |     |     |
 
 The following table details the IBM Spectrum LSF *p8aff* esub parameters to be used for several standard execution configurations:
 
