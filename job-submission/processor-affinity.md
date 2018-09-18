@@ -1,7 +1,7 @@
 # Processor Affinity
 
 Processor Affinity can be handled in the following ways:
-* Through the IBM Spectrum LSF *affinity* directive
+* Through the IBM Spectrum LSF Affinity directive
 * Through the IBM Spectrum LSF *p8aff* esub [Valid for POWER8-based systems]
 * Through a user-specific script
 
@@ -9,7 +9,7 @@ Processor Affinity can be handled in the following ways:
 
 The explicit resource requirement is expressed through the following directive inside the submission script:
 ```
-#BSUB -R "affinity[<pu_type>(#):cpubind=<level>:distribute=<policy>]"
+#BSUB -R "affinity[<pu_type>(#[,<options>]):cpubind=<level>:distribute=<policy>]"
 ```
 This directive has the following syntax:
 
@@ -26,19 +26,34 @@ This directive has the following syntax:
 | distribute=policy 	| balance | Task distribution onto the Processor Units inside a compute node
 |                     | pack    |
 
+The following table details the IBM Spectrum LSF *affinity* directive syntax to be used for several standard execution configurations:
+
+| MPI Tasks / Node | Threads / Task | IBM Spectrum LSF *affinity* Directive
+|:----------------:|:--------------:|:---------------------------------------:
+| 1                | 18             | #BSUB -R "affinity[thread(1,exclusive=(core,intask))*18:cpubind=thread:distribute=balance]"
+| 1                | 36             | #BSUB -R "affinity[thread(1,exclusive=(core,intask))*36:cpubind=thread:distribute=balance]"
+| 2                | 1              | #BSUB -R "affinity[thread(1):cpubind=thread:distribute=balance]"
+| 2                | 18             | #BSUB -R "affinity[thread(1,exclusive=(core,intask))*18:cpubind=thread:distribute=balance]"
+| 6                | 6              | #BSUB -R "affinity[thread(1,exclusive=(core,intask))*6:cpubind=thread:distribute=balance]"
+| 9                | 4              | #BSUB -R "affinity[thread(1,exclusive=(core,intask))*4:cpubind=thread:distribute=balance]"
+| 18               | 2              | #BSUB -R "affinity[thread(1,exclusive=(core,intask))*2:cpubind=thread:distribute=balance]"
+| 36               | 1              | #BSUB -R "affinity[thread(1):cpubind=thread:distribute=balance]"
+| 36               | 2              | #BSUB -R "affinity[thread(2,same=core,exclusive=(core,intask)):cpubind=thread:distribute=balance]"
+| 36               | 4              | #BSUB -R "affinity[thread(4,same=core,exclusive=(core,intask)):cpubind=thread:distribute=balance]"
+
 ## IBM Spectrum LSF *p8aff* esub
 
 This mechanism is invoked through the following directive inside the IBM Spectrum LSF job submission script:
 ```
-#BSUB -a p8aff(num_threads_per_task,smt,cpus_per_core,distribution_policy)
+#BSUB -a p8aff(<num_threads_per_task>,<smt>,<cpus_per_core>,<distribution_policy>)
 ```
 The *p8aff* function takes the following arguments:
 
 | Argument               | Value         | Purpose
 |:----------------------:|:-------------:|:-------:
-| *num_threads_per_task* | 1-160         | Number of threads per task (OMP_NUM_THREADS environment variable will be initialized with the given value)
-| *smt*                  | 1, 2, 4, 8    | SMT mode to apply to all allocated compute nodes
-| *cpus_per_core*        | 1-8           | Number of logical cores (CPUs) used by threads inside every physical core
+| *num_threads_per_task* |               | Number of threads per task (OMP_NUM_THREADS environment variable will be initialized with the given value)
+| *smt*                  | 1, 2, 4       | SMT mode to apply to all allocated compute nodes
+| *cpus_per_core*        | 1, 2, 3, 4    | Number of logical cores (CPUs) used by threads inside each physical core
 | *distribution_policy*  | balance, pack | Task distribution inside a compute node
 
 > Except for the number of threads per task, all arguments are considered as optional, and can therefore remain unspecified.
@@ -71,13 +86,15 @@ The following table details the IBM Spectrum LSF *p8aff* esub parameters to be u
 
 | MPI Tasks / Node | Threads / Task | IBM Spectrum LSF *p8aff* esub Directive
 |:----------------:|:--------------:|:---------------------------------------:
-| 1                | 20             | #BSUB -a p8aff(20,8,1,balance)
-| 2                | 10             | #BSUB -a p8aff(10,8,1,balance)
-| 4                | 5              | #BSUB -a p8aff(5,8,1,balance)
-| 10               | 2              | #BSUB -a p8aff(2,8,1,balance)
-| 20               | 1              | #BSUB -a p8aff(1,8,1,balance)
-| 20               | 2              | #BSUB -a p8aff(2,8,2,balance)
-| 20               | 4              | #BSUB -a p8aff(4,8,4,balance)
+| 1                | 18             | #BSUB -a p8aff(18,4,1,balance)
+| 1                | 36             | #BSUB -a p8aff(36,4,1,balance)
+| 2                | 18             | #BSUB -a p8aff(18,4,1,balance)
+| 6                | 6              | #BSUB -a p8aff(6,4,1,balance)
+| 9                | 4              | #BSUB -a p8aff(4,4,1,balance)
+| 18               | 2              | #BSUB -a p8aff(2,4,1,balance)
+| 36               | 1              | #BSUB -a p8aff(1,4,1,balance)
+| 36               | 2              | #BSUB -a p8aff(2,4,2,balance)
+| 36               | 4              | #BSUB -a p8aff(4,4,4,balance)
 
 > The *p8aff* esub automatically sets the following two environment variables:
 * `LSB_EFFECTIVE_RSRCREQ`: Effective IBM Spectrum LSF Resource Requirement, including Affinity String used to control the Processor Affinity of the current job.
@@ -102,21 +119,3 @@ mpirun --hostfile ${LSB_DJOB_HOSTFILE} -np ${LSB_DJOB_NUMPROC} <binary>
 ```
 
 > The Spectrum LSF *ompi* predefined application takes care of generating the rankfile to be used by the Open MPI execution command.
-
-## Standalone Shared Memory (Multi-Threads) Job Submission
-
-* Option #1: Mixed IBM XL + OpenMP Environment Variables
-```
-export OMP_PROC_BIND=true
-export XLSMPOPTS={ startproc=<cpu-number>:stride=<stride> | procs=<cpu-list> }
-```
-
-> When settings defined by OMP and XLSMPOPTS environment variables conflict, priority is given to OMP environment variables.
-
-* Option #2: Pure OpenMP Environment Variables
-```
-export OMP_PROC_BIND=true
-export OMP_PLACES={<place>}:<count>:<stride>
-```
-
-> What's the difference between OMP_PLACES and GOMP_CPU_AFFINITY?
