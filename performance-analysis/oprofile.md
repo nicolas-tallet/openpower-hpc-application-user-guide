@@ -1,28 +1,29 @@
 # OProfile
 
-OProfile is an Open-Source project including a statistical tool for performance profiling.
-OProfile is available inside the Linux distribution itself, or through the *IBM SDK for LoP* (up-to-date version with full POWER8 support).
+OProfile is an Open-Source project including a statistical tool for performance profiling. OProfile is available inside the Linux distribution itself, or through the _IBM SDK for LoP_ \(up-to-date version with full POWER8 support\).
 
 OProfile mainly relies on the following commands:
 
-| Command    | Purpose
-|:----------:|---------
-| ophelp     | List available hardware counters
-| operf      | Record events
-| opreport   | Display performance report
-| opannotate | Annotate source code with events
+| Command | Purpose |
+| :---: | :--- |
+| ophelp | List available hardware counters |
+| operf | Record events |
+| opreport | Display performance report |
+| opannotate | Annotate source code with events |
 
 ## Performance Data Collection
 
 Performance data collection is achieved through the ‘operf’ command:
-```
+
+```text
 $ operf <binary>
 ```
 
 ## Performance Data Reporting
 
 Performance data reporting is achieved through the ‘opreport’ command:
-```
+
+```text
 $ opreport
 CPU_CLK_UNHALT...|
 . samples|      %|
@@ -39,3 +40,4 @@ CPU_CLK_UNHALT...|
 .       7  0.0278 libc-2.19.so
 .       2  0.0079 libpthread-2.19.so
 ```
+

@@ -1,26 +1,30 @@
-# IBM Spectrum MPI
+# MPI Library
 
 ## Invocation
 
 The invocation commands of the MPI wrappers are the following:
 
-| C     | C++    | Fortran
-|:-----:|:------:|:-------:|
+| C | C++ | Fortran |
+| :---: | :---: | :---: |
 | mpicc | mpicxx | mpifort |
-|       | mpic++ |         |
+|  | mpic++ |  |
 
 > The following Fortran wrappers are deprecated as of Open MPI v1.7, and replaced by `mpifort`:
+>
 > * `mpif77`
 > * `mpif90`
-
+>
 > The following options allow to make the wrapper command explicit:
+>
 > * `-show`
 > * `--showme:compile`: Flags for compilation
 > * `--showme:link`: Flags for linking
+>
 >   These options are very useful to confirm, for instance, that the expected compiler is the one actually invoked.
 
 Example: Checking the compiler and associated libraries called by the MPI Wrapper:
-```
+
+```text
 $ mpicc -show
 xlc_r -I/opt/ibm/spectrum_mpi/include -pthread -L/opt/ibm/spectrum_mpi/lib -lmpi_ibm
 ```
@@ -29,11 +33,11 @@ xlc_r -I/opt/ibm/spectrum_mpi/include -pthread -L/opt/ibm/spectrum_mpi/lib -lmpi
 
 For each MPI wrapper, the following environment variables provide a way to customize the wrapper configuration:
 
-| Wrapper Compiler | Compiler  | Preprocessor Flags | Compiler Flags | Linker Flags  | Linker Library Flags
-|:----------------:|:--------: |:------------------:|:--------------:|:-------------:|:--------------------:|
-| mpicc            | OMPI_CC   | OMPI_CPPFLAGS      | OMPI_CFLAGS    | OMPI_LDFLAGS  | OMPI_LIBS
-| mpicxx           | OMPI_CXX  | OMPI_CPPFLAGS      | OMPI_CXXFLAGS  | OMPI_LDFLAGS  | OMPI_LIBS
-| mpifort          | OMPI_FC   | OMPI_CPPFLAGS      | OMPI_FCFLAGS   | OMPI_LDFLAGS  | OMPI_LIBS
+| Wrapper Compiler | Compiler | Preprocessor Flags | Compiler Flags | Linker Flags | Linker Library Flags |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| mpicc | OMPI\_CC | OMPI\_CPPFLAGS | OMPI\_CFLAGS | OMPI\_LDFLAGS | OMPI\_LIBS |
+| mpicxx | OMPI\_CXX | OMPI\_CPPFLAGS | OMPI\_CXXFLAGS | OMPI\_LDFLAGS | OMPI\_LIBS |
+| mpifort | OMPI\_FC | OMPI\_CPPFLAGS | OMPI\_FCFLAGS | OMPI\_LDFLAGS | OMPI\_LIBS |
 
 ## CUDA-Awareness
 
@@ -67,3 +71,4 @@ However:
   * MPI\_Neighbor\_alltoallw
   * IBM Spectrum MPI behavior is undefined when an MPI application passes a GPU device address to an MPI API that is not CUDA aware; the application might trigger a segmentation fault and dump core, or it might give incorrect results.
   * Most MPI APIs are CUDA-aware, however, IBM Spectrum MPI does not supply header files or Fortran module files that identify which MPI APIs accept GPU device addresses as arguments. Refer to the preceding restriction for a list of MPI APIs that may not be used with GPU device addresses.
+

@@ -1,6 +1,6 @@
-# Summary
+# Table of contents
 
-## Introduction
+* [Introduction](README.md)
 
 ## OpenPOWER Platform
 
@@ -22,7 +22,7 @@
 
 ## Debugging
 
-* [GNU Debugger (GDB)](debugging/gdb.md)
+* [GNU Debugger \(GDB\)](debugging/gdb.md)
 * [Allinea DDT](debugging/allinea-ddt.md)
 
 ## Performance Analysis
@@ -38,3 +38,4 @@
 * [FAQ](appendix/faq.md)
 * [Links](appendix/links.md)
 * [Samples](appendix/samples.md)
+

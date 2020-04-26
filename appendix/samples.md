@@ -3,7 +3,8 @@
 ## IBM Spectrum LSF Typical Job Submission File
 
 Example: Parallel Execution with 2 Compute Nodes, 8 Tasks Total, 4 Tasks / Node, 5 Threads / Task, 1 Task / GPU
-```
+
+```text
 #!/bin/bash
 
 #BSUB -cwd /home/login/myjob
@@ -21,3 +22,4 @@ ml xlc xlf smpi
 
 mpirun -display-allocation -prot -report-bindings /home/login/myjob/myjob.bin
 ```
+

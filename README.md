@@ -1,13 +1,12 @@
-![OpenPOWER Logo](openpower-logo.jpeg)
+# Introduction
 
-# OpenPOWER HPC Application User Guide
+![OpenPOWER Logo](.gitbook/assets/openpower-logo.jpeg)
 
-High Performance Computing (HPC) on IBM Power Systems
-Application User Guide
+## OpenPOWER HPC Application User Guide
 
-**Authors:**
-Nicolas Tallet, Geoffrey Pascal, Ludovic Enault, Pascal Vezolle
-(IBM Client Center Montpellier High Performance Computing & Cognitive Team)
+High Performance Computing \(HPC\) on IBM Power Systems Application User Guide
 
-**Target Audience:**
-Benchmarkers, Application Developers
+**Authors:** Nicolas Tallet, Geoffrey Pascal, Ludovic Enault, Pascal Vezolle \(IBM Client Center Montpellier High Performance Computing & Cognitive Team\)
+
+**Target Audience:** Benchmarkers, Application Developers
+

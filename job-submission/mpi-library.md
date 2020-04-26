@@ -12,7 +12,7 @@
 
 > Output Example for Option `-display-allocation`:
 >
-> ```
+> ```text
 > ======================   ALLOCATED NODES   ======================
 >     host01: slots=4 max_slots=0 slots_inuse=0 state=UP
 > =================================================================
@@ -20,7 +20,7 @@
 >
 > Output Example for Option `-report-bindings`:
 >
-> ```
+> ```text
 >
 > ```
 

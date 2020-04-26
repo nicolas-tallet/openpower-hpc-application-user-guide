@@ -1,9 +1,10 @@
-# Frequently Asked Questions (FAQ)
+# FAQ
 
 ## How To Display the Map of Physical Cores / Logical Cores?
 
-The `ppc64_cpu` command displays the relationship between physical cores and logical cores (hardware threads) of the system:
-```
+The `ppc64_cpu` command displays the relationship between physical cores and logical cores \(hardware threads\) of the system:
+
+```text
 $ ppc64_cpu --info
 Core   0:    0*    1*    2*    3*    4*    5*    6*    7*
 Core   1:    8*    9*   10*   11*   12*   13*   14*   15*
@@ -26,79 +27,88 @@ Core  17:  136*  137*  138*  139*  140*  141*  142*  143*
 Core  18:  144*  145*  146*  147*  148*  149*  150*  151*
 Core  19:  152*  153*  154*  155*  156*  157*  158*  159*
 ```
-In the above example, the system is configured with SMT8. Each of the 20 physical cores (*Core 0* to *Core 19*) is made of 8 logical cores (hardware threads).
 
-## How To Specify Pre-Processing Option (Macro) to IBM XL Fortran Compiler?
+In the above example, the system is configured with SMT8. Each of the 20 physical cores \(_Core 0_ to _Core 19_\) is made of 8 logical cores \(hardware threads\).
 
-The IBM XL Fortran does not support the standard syntax related to pre-processing options.
-With this compiler, it is required to add the *-WF* option to introduce macros, as shown in the example below:
-```
+## How To Specify Pre-Processing Option \(Macro\) to IBM XL Fortran Compiler?
+
+The IBM XL Fortran does not support the standard syntax related to pre-processing options. With this compiler, it is required to add the _-WF_ option to introduce macros, as shown in the example below:
+
+```text
 xlf90_r -qfree=f90 '-WF,-Dmacro1=1,-Dmacro2' a.F
 ```
 
 ## How To Increase The IBM XL SMP Library OpenMP Stack Size?
 
-By default, the IBM XL SMP library has a very limited OpenMP stack size value (4 MB).
-It is therefore frequent to alter this default value through the following environment variable setting:
-```
+By default, the IBM XL SMP library has a very limited OpenMP stack size value \(4 MB\). It is therefore frequent to alter this default value through the following environment variable setting:
+
+```text
 export XLSMPOPTS=”stack=16777216”
 ```
+
 Note:
+
 > Stack size must be specified in Bytes.
 
 ## How To Avoid Some PGI Compilation Errors?
 
-By default, PGI Accelerator uses its own preprocessor.
-It is often the case that the preprocessor must be set to the default system preprocessor to avoid compilation errors. Setting the CPP environment variable is normally enough:
-```
+By default, PGI Accelerator uses its own preprocessor. It is often the case that the preprocessor must be set to the default system preprocessor to avoid compilation errors. Setting the CPP environment variable is normally enough:
+
+```text
 export CPP=/usr/bin/cpp
 ```
 
 ## How To Open An Interactive Session Through IBM Spectrum LSF?
 
 IBM Spectrum LSF allows opening an interactive session onto the compute nodes through the following command:
-```
+
+```text
 bsub -Ip -n <cpus> -q <queue> /bin/bash
 ```
-Obviously, the interactive session will wait for the requested resource allocation to be possible before the session can actually open.
-An additional, specific interconnect option is required by the `mpirun` command when launching an MPI execution in interactive mode:
-```
+
+Obviously, the interactive session will wait for the requested resource allocation to be possible before the session can actually open. An additional, specific interconnect option is required by the `mpirun` command when launching an MPI execution in interactive mode:
+
+```text
 -pami_noib
 ```
 
 ## How To Solve The ‘Accelerator Does Not Match’ Error Message?
 
 The error message has the following syntax:
-```
+
+```text
 Current region was compiled for:
 NVIDIA Tesla GPU sm30 sm35
 Available accelerators:
 device[1]: Native X86 (CURRENT DEVICE)
 The accelerator does not match the profile for which this program was compiled
 ```
-This message is linked to the fact that no visible GPU device has been defined for the given task.
-The solution involves properly setting the environment variable `CUDA_VISIBLE_DEVICES`.
+
+This message is linked to the fact that no visible GPU device has been defined for the given task. The solution involves properly setting the environment variable `CUDA_VISIBLE_DEVICES`.
 
 ## How To Monitor GPU Activity on Interactive Nodes?
 
 Two options exist for monitoring the GPU activity on one of the interactive nodes:
 
-*	Option #1: NVIDIA System Management Interface Command
-```
-$ nvidia-smi pmon
-# gpu     pid  type    sm   mem   enc   dec   command
-# Idx       #   C/G     %     %     %     %   name
-.   0  145349     C    64     0     0     0   matrixMul
-.   1       -     -     -     -     -     -   -
-.   2  145351     C    65     0     0     0   matrixMul
-.   3       -     -     -     -     -     -   -
-```
+* Option \#1: NVIDIA System Management Interface Command
 
-*	Option #2: `gpustat` Utility
-```
-host  Mon Feb 13 19:08:43 2017
-[0] Tesla K80        | 51'C,  23 % |    64 / 11441 MB | login:matrixMul/40281(62M)
-[1] Tesla K80        | 33'C,   0 % |     2 / 11441 MB |
-[2] Tesla K80        | 37'C,   0 % |     2 / 11441 MB |
-[3] Tesla K80        | 31'C,   0 % |     2 / 11441 MB |
-```
+  ```text
+  $ nvidia-smi pmon
+  # gpu     pid  type    sm   mem   enc   dec   command
+  # Idx       #   C/G     %     %     %     %   name
+  .   0  145349     C    64     0     0     0   matrixMul
+  .   1       -     -     -     -     -     -   -
+  .   2  145351     C    65     0     0     0   matrixMul
+  .   3       -     -     -     -     -     -   -
+  ```
+
+* Option \#2: `gpustat` Utility
+
+  ```text
+  host  Mon Feb 13 19:08:43 2017
+  [0] Tesla K80        | 51'C,  23 % |    64 / 11441 MB | login:matrixMul/40281(62M)
+  [1] Tesla K80        | 33'C,   0 % |     2 / 11441 MB |
+  [2] Tesla K80        | 37'C,   0 % |     2 / 11441 MB |
+  [3] Tesla K80        | 31'C,   0 % |     2 / 11441 MB |
+  ```
+
